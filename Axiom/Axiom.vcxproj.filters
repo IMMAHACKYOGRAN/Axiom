@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Axiom">
+      <UniqueIdentifier>{C3D3DA0C-2FE8-02BE-F869-A61D643DFFEE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Axiom\Events">
+      <UniqueIdentifier>{4746AAD7-33A9-397C-DC2E-7232C87005FF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Axiom.h" />
+    <ClInclude Include="src\Axiom\Application.h">
+      <Filter>Axiom</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axiom\Core.h">
+      <Filter>Axiom</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axiom\EntryPoint.h">
+      <Filter>Axiom</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axiom\Events\ApplicationEvent.h">
+      <Filter>Axiom\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axiom\Events\Event.h">
+      <Filter>Axiom\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axiom\Events\KeyEvent.h">
+      <Filter>Axiom\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axiom\Events\MouseEvent.h">
+      <Filter>Axiom\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axiom\Log.h">
+      <Filter>Axiom</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Axiom\Application.cpp">
+      <Filter>Axiom</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Axiom\Log.cpp">
+      <Filter>Axiom</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
