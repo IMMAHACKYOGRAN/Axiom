@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Axiom {
 
 	class AXIOM_API WindowResizeEvent : public Event

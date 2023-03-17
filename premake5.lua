@@ -11,6 +11,11 @@ workspace "Axiom"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Axiom/vendor/GLFW/include"
+
+include "Axiom/vendor/GLFW"
+
 project "Axiom"
     location "Axiom"
     kind "SharedLib"
@@ -18,6 +23,9 @@ project "Axiom"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+    pchheader "axpch.h"
+    pchsource "Axiom/src/axpch.cpp"
 
     files
     {
@@ -30,8 +38,15 @@ project "Axiom"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
     }
+
+    links 
+	{ 
+		"GLFW",
+		"opengl32.lib"
+	}
 
     filter "system:windows"
         cppdialect "C++17"
@@ -51,7 +66,7 @@ project "Axiom"
         }
         
     filter "configurations:Debug"
-        defines "AX_DEBUG"
+        defines {"AX_DEBUG", "AX_ENABLE_ASSERTS"}
         symbols "On"
 
     filter "configurations:Release"

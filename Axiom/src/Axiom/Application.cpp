@@ -1,14 +1,14 @@
+#include "axpch.h"
 #include "Application.h"
 
 #include "Axiom/Events/ApplicationEvent.h"
-#include "Axiom/Log.h"
 
 namespace Axiom {
 
 	Application::Application()
 	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
-
 
 	Application::~Application()
 	{
@@ -16,10 +16,10 @@ namespace Axiom {
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-		AX_TRACE(e);
-
-		while (true);
+		while (m_Running)
+		{
+			m_Window->OnUpdate();
+		}
 	}
 
 }
