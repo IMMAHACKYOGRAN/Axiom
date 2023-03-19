@@ -100,6 +100,13 @@ namespace Axiom {
 				}
 			});
 
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, uint32_t key)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				KeyTypedEvent e(key);
+				data.EventCallBack(e);
+			});
+
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
