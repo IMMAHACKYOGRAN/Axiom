@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Axiom/vendor/GLFW/include"
+IncludeDir["Glad"] = "Axiom/vendor/Glad/include"
 
 include "Axiom/vendor/GLFW"
+include "Axiom/vendor/Glad"
 
 project "Axiom"
     location "Axiom"
@@ -39,25 +41,28 @@ project "Axiom"
     {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links 
 	{ 
 		"GLFW",
+        "Glad",
 		"opengl32.lib"
 	}
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "on"
+        staticruntime "off"
         systemversion "latest"
 
         defines
         {
             "AX_PLATFORM_WINDOWS",
             "AX_BUILD_DLL",
-            "_WINDLL"
+            "_WINDLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
@@ -67,14 +72,17 @@ project "Axiom"
         
     filter "configurations:Debug"
         defines {"AX_DEBUG", "AX_ENABLE_ASSERTS"}
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "AX_RELEASE"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "AX_DIST"
+        runtime "Release"
         optimize "On"
 
 project "Sandbox"
@@ -111,19 +119,24 @@ project "Sandbox"
 
         defines
         {
-            "AX_PLATFORM_WINDOWS",
-            "_MBCS"
+            "AX_PLATFORM_WINDOWS"
         }
 
         filter "configurations:Debug"
-            defines "AX_DEBUG"
-            symbols "On"
+		defines "AX_DEBUG"
+        staticruntime "off"
+        runtime "Debug"
+		symbols "On"
 
-        filter "configurations:Release"
-            defines "AX_RELEASE"
-            optimize "On"
+	filter "configurations:Release"
+		defines "AX_RELEASE"
+        staticruntime "off"
+        runtime "Release"
+		optimize "On"
 
-        filter "configurations:Dist"
-            defines "AX_DIST"
-            optimize "On"
+	filter "configurations:Dist"
+		defines "AX_DIST"
+		staticruntime "off"
+        runtime "Release"
+		optimize "On"
 

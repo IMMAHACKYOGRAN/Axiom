@@ -2,6 +2,7 @@
 
 /* ----- Only used by client ----- */
 #include "Axiom/Application.h"
+#include "Axiom/Layer.h"
 #include "Axiom/Log.h"
 /* ------------------------------- */
 

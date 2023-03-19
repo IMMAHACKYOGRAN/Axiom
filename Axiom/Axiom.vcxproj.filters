@@ -37,6 +37,12 @@
     <ClInclude Include="src\Axiom\Events\MouseEvent.h">
       <Filter>Axiom\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Axiom\Layer.h">
+      <Filter>Axiom</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axiom\LayerStack.h">
+      <Filter>Axiom</Filter>
+    </ClInclude>
     <ClInclude Include="src\Axiom\Log.h">
       <Filter>Axiom</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axiom\Application.cpp">
+      <Filter>Axiom</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Axiom\Layer.cpp">
+      <Filter>Axiom</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Axiom\LayerStack.cpp">
       <Filter>Axiom</Filter>
     </ClCompile>
     <ClCompile Include="src\Axiom\Log.cpp">
