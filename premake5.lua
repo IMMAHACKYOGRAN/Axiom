@@ -14,9 +14,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Axiom/vendor/GLFW/include"
 IncludeDir["Glad"] = "Axiom/vendor/Glad/include"
+IncludeDir["ImGui"] = "Axiom/vendor/imgui"
 
 include "Axiom/vendor/GLFW"
 include "Axiom/vendor/Glad"
+include "Axiom/vendor/ImGui"
 
 project "Axiom"
     location "Axiom"
@@ -42,12 +44,14 @@ project "Axiom"
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.Glad}"
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}"
     }
 
     links 
 	{ 
 		"GLFW",
+		"ImGui",
         "Glad",
 		"opengl32.lib"
 	}

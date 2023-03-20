@@ -13,7 +13,6 @@ public:
 
 	void OnEvent(Axiom::Event& e) override
 	{
-		AX_CORE_TRACE("{0}", e);
 	}
 };
 
@@ -23,6 +22,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Axiom::ImGuiLayer());
 	}
 
 	~Sandbox()

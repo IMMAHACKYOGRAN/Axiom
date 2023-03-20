@@ -1,6 +1,8 @@
 #include "axpch.h"
 #include "Application.h"
 
+#include <glad/glad.h>
+
 namespace Axiom {
 
 	Application* Application::s_Instance = nullptr;
@@ -46,6 +48,8 @@ namespace Axiom {
 	{
 		while (m_Running)
 		{
+			glClearColor(0, 0, 0, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
