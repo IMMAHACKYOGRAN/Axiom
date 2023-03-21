@@ -5,10 +5,13 @@ class ExampleLayer : public Axiom::Layer
 public:
 	ExampleLayer()
 		: Layer("Example")
-	{}
+	{
+	}
 
 	void OnUpdate() override
 	{
+		if (Axiom::Input::IsKeyPressed(AX_KEY_TAB))
+			AX_TRACE("Key is pressed");
 	}
 
 	void OnEvent(Axiom::Event& e) override

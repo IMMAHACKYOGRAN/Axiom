@@ -3,6 +3,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace Axiom {
 
 	Application* Application::s_Instance = nullptr;
@@ -48,15 +50,15 @@ namespace Axiom {
 	{
 		while (m_Running)
 		{
-			glClearColor(0, 0, 0, 1);
+			glClearColor(0.2f, 0.2f, 0.2f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
 			m_Window->OnUpdate();
 		}
 	}
-
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{

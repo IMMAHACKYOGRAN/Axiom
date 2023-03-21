@@ -84,7 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
@@ -161,11 +161,15 @@
     <ClInclude Include="src\Axiom\Events\KeyEvent.h" />
     <ClInclude Include="src\Axiom\Events\MouseEvent.h" />
     <ClInclude Include="src\Axiom\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Axiom\Input.h" />
+    <ClInclude Include="src\Axiom\KeyCodes.h" />
     <ClInclude Include="src\Axiom\Layer.h" />
     <ClInclude Include="src\Axiom\LayerStack.h" />
     <ClInclude Include="src\Axiom\Log.h" />
+    <ClInclude Include="src\Axiom\MouseButtonCodes.h" />
     <ClInclude Include="src\Axiom\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\axpch.h" />
   </ItemGroup>
@@ -176,6 +180,7 @@
     <ClCompile Include="src\Axiom\LayerStack.cpp" />
     <ClCompile Include="src\Axiom\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\axpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

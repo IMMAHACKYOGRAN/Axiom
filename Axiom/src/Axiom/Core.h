@@ -10,6 +10,9 @@
 	#error Axiom only supports Windows
 #endif
 
+#ifdef AX_DEBUG
+	#define AX_ENABLE_ASSERTS
+#endif
 
 #ifdef AX_ENABLE_ASSERTS
 	#define AX_ASSERT(x, ...) { if(!(x)) { AX_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }

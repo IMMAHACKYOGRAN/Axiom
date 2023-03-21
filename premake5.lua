@@ -57,7 +57,7 @@ project "Axiom"
 	}
 
     filter "system:windows"
-        cppdialect "C++17"
+        cppdialect "C++20"
         staticruntime "off"
         systemversion "latest"
 
@@ -117,7 +117,7 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++17"
+        cppdialect "C++20"
         staticruntime "on"
         systemversion "latest"
 
