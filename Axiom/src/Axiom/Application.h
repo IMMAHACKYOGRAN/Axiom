@@ -7,9 +7,13 @@
 #include "Axiom/Events/Event.h"
 #include "Axiom/Events/ApplicationEvent.h"
 
+#include"Axiom/Core/TimeStep.h"
+
+#include "Axiom/ImGui/ImGuiLayer.h"
+
 namespace Axiom {
 
-	class AXIOM_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -24,12 +28,16 @@ namespace Axiom {
 
 		inline static Application& Get() { return *s_Instance; }
 		inline Window& GetWindow() { return *m_Window; }
+	
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
-		std::unique_ptr<Window> m_Window;
+	
+	private:
+		Scope<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};

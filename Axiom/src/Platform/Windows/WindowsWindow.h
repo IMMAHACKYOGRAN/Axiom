@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Axiom/Window.h"
+#include "Axiom/Renderer/RenderContext.h"
 
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 
 namespace Axiom {
 
@@ -27,6 +28,7 @@ namespace Axiom {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		RenderContext* m_Context;
 
 		struct WindowData
 		{

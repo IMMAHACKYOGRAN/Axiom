@@ -1,14 +1,6 @@
 #pragma once
 
-#ifdef AX_PLATFORM_WINDOWS
-	#ifdef AX_BUILD_DLL
-		#define AXIOM_API __declspec(dllexport)
-	#else
-		#define AXIOM_API __declspec(dllimport)
-	#endif
-#else
-	#error Axiom only supports Windows
-#endif
+#include <memory>
 
 #ifdef AX_DEBUG
 	#define AX_ENABLE_ASSERTS
@@ -25,3 +17,12 @@
 #define BIT(x) (1 << x)
 
 #define AX_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+namespace Axiom
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}

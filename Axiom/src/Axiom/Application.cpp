@@ -1,9 +1,12 @@
 #include "axpch.h"
 #include "Application.h"
 
-#include <glad/glad.h>
+#include "glm/glm.hpp"
 
 #include "Input.h"
+#include "Axiom/Renderer/Renderer.h"
+
+#include <GLFW/glfw3.h>
 
 namespace Axiom {
 
@@ -13,8 +16,14 @@ namespace Axiom {
 	{
 		AX_CORE_ASSERT(!s_Instance, "Application already exists");
 		s_Instance = this;
-		m_Window = std::unique_ptr<Window>(Window::Create());
+
+		m_Window = Scope<Window>(Window::Create());
 		m_Window->SetEventCallback(AX_BIND_EVENT_FN(Application::OnEvent));
+
+		Renderer::Init();
+
+		m_ImGuiLayer = new ImGuiLayer;
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
@@ -50,11 +59,17 @@ namespace Axiom {
 	{
 		while (m_Running)
 		{
-			glClearColor(0.2f, 0.2f, 0.2f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			float time = (float)glfwGetTime(); // Platform::GetTime();
+			TimeStep timeStep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timeStep);
+
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 		}

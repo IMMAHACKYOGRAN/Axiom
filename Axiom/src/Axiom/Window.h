@@ -17,7 +17,7 @@ namespace Axiom {
 		}
 	};
 
-	class AXIOM_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
